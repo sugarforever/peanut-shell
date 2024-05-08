@@ -2,7 +2,7 @@
 
 <img src="docs/images/logo.png" width=150 />
 
-`Peanut Shell` is a reranking service for better RAG performance. The models supported is from [CrossEncoder](https://huggingface.co/cross-encoder).
+`Peanut Shell` is a reranking service for better RAG performance. The models supported are from [CrossEncoder](https://huggingface.co/cross-encoder).
 
 Check out the models supported so far:
 
