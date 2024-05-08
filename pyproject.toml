@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "peanut-shell"
+version = "0.1.0"
+description = ""
+authors = ["sugarforever <william.1022@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.111.0"
+uvicorn = "^0.29.0"
+pydantic = "^2.7.1"
+sentence-transformers = "^2.7.0"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
