@@ -1,5 +1,7 @@
 # Peanut Shell
 
+<img src="docs/images/logo.png" styles="margin-left: auto; margin-right: auto" width=100 />
+
 `Peanut Shell` is a reranking service for better RAG performance. The underlying model used is [cross-encoder/ms-marco-MiniLM-L-6-v2](https://huggingface.co/cross-encoder/ms-marco-MiniLM-L-6-v2).
 
 ## User Guide
