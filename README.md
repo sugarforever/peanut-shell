@@ -1,8 +1,22 @@
 # Peanut Shell
 
-<img src="docs/images/logo.png" styles="margin-left: auto; margin-right: auto" width=100 />
+<img src="docs/images/logo.png" width=150 />
 
-`Peanut Shell` is a reranking service for better RAG performance. The underlying model used is [cross-encoder/ms-marco-MiniLM-L-6-v2](https://huggingface.co/cross-encoder/ms-marco-MiniLM-L-6-v2).
+`Peanut Shell` is a reranking service for better RAG performance. The models supported is from [CrossEncoder](https://huggingface.co/cross-encoder).
+
+Check out the models supported so far:
+
+- ms-marco-TinyBERT-L-2-v2
+- ms-marco-MiniLM-L-2-v2
+- ms-marco-MiniLM-L-4-v2
+- ms-marco-MiniLM-L-6-v2
+- ms-marco-MiniLM-L-12-v2
+- ms-marco-TinyBERT-L-2
+- ms-marco-TinyBERT-L-4
+- ms-marco-TinyBERT-L-6
+- ms-marco-electra-base
+
+For more details, please refer to the models table on [cross-encoder/ms-marco-MiniLM-L-6-v2](https://huggingface.co/cross-encoder/ms-marco-MiniLM-L-6-v2).
 
 ## User Guide
 
@@ -20,12 +34,39 @@ $ docker compose up -d
 
 ### How to use
 
-The only API exposed is. Refer to the example below on how to make API call.
+There are 2 APIs available. Refer to the example below on how to make API call.
+
+#### List supported models
+
+```shell
+curl --location 'http://localhost:8000/v1/models'
+```
+
+Expected response
+
+```json
+{
+    "models": [
+        "ms-marco-TinyBERT-L-2-v2",
+        "ms-marco-MiniLM-L-2-v2",
+        "ms-marco-MiniLM-L-4-v2",
+        "ms-marco-MiniLM-L-6-v2",
+        "ms-marco-MiniLM-L-12-v2",
+        "ms-marco-TinyBERT-L-2",
+        "ms-marco-TinyBERT-L-4",
+        "ms-marco-TinyBERT-L-6",
+        "ms-marco-electra-base"
+    ]
+}
+```
+
+#### Rerank documents
 
 ```shell
 curl --location 'http://localhost:8000/v1/rerank/' \
 --header 'Content-Type: application/json' \
 --data '{
+    "model": "model": "ms-marco-MiniLM-L-6-v2",
     "query": "What is the capital of the United States?",
     "top_n": 3,
     "documents": [
@@ -57,3 +98,9 @@ You should expect similar response as below:
     ]
 }
 ```
+
+## API Documentation
+
+When you launch the API on localhost, you should be able to view the API documentation on [http://localhost:8000/docs](http://localhost:8000/docs).
+
+![API Doc](./docs/images/api-doc.png)

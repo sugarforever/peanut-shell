@@ -1,11 +1,22 @@
-from fastapi import APIRouter
-from http_requests import RerankRequest
-from http_responses import RerankResponse
+from fastapi import APIRouter, HTTPException
+from http_requests import RerankRequest, CROSS_ENCODER_MODELS
+from http_responses import RerankModelsResponse, RerankResponse
 from services import CrossEncoderRerankService
 
 router = APIRouter()
 
+
+@router.get("/models/", response_model=RerankModelsResponse)
+def models():
+    return RerankModelsResponse(models=CROSS_ENCODER_MODELS)
+
+
 @router.post("/rerank/", response_model=RerankResponse)
 def rerank(request: RerankRequest):
-    service = CrossEncoderRerankService("cross-encoder/ms-marco-MiniLM-L-6-v2")
+    if request.model not in CROSS_ENCODER_MODELS:
+        detail = f"Invalid model name: {request.model}. Available models: {','.join(CROSS_ENCODER_MODELS)}"
+        raise HTTPException(status_code=400, detail=detail)
+
+    model_name = f"cross-encoder/{request.model}"
+    service = CrossEncoderRerankService(modelName=model_name)
     return service.rerank(request)
