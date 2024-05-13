@@ -10,11 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Delete old files
+      - name: Delete cached images
         run: |
-          sudo rm -rf /opt/ghc
-          sudo rm -rf "/usr/local/share/boost"
-          sudo rm -rf /tmp/*
+          sudo docker system prune --all
       - name: Checkout code
         uses: actions/checkout@v2
 
