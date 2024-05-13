@@ -12,9 +12,9 @@ jobs:
     steps:
       - name: Delete old files
         run: |
-          rm -rf /opt/ghc
-          rm -rf "/usr/local/share/boost"
-          rm -rf /tmp/*
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf /tmp/*
       - name: Checkout code
         uses: actions/checkout@v2
 
