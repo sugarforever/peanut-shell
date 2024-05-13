@@ -1,9 +1,7 @@
 version: '3.1'
 services:
   peanutshell:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/sugarforever/peanut-shell:latest
     ports:
       - "8000:8000"
     volumes:
