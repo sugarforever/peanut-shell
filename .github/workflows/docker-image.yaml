@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Delete cached images
         run: |
-          sudo docker system prune --all
+          sudo docker system prune --all --force
       - name: Checkout code
         uses: actions/checkout@v2
 
