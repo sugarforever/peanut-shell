@@ -66,7 +66,7 @@ Expected response
 curl --location 'http://localhost:8000/v1/rerank/' \
 --header 'Content-Type: application/json' \
 --data '{
-    "model": "model": "ms-marco-MiniLM-L-6-v2",
+    "model": "ms-marco-MiniLM-L-6-v2",
     "query": "What is the capital of the United States?",
     "top_n": 3,
     "documents": [
