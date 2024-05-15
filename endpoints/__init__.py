@@ -18,7 +18,7 @@ def rerank(request: RerankRequest):
         raise HTTPException(status_code=400, detail=detail)
 
     if len(request.documents) == 0:
-        raise HTTPException(status_code=400, detail="invalid request: list of documents must not be empty")
+        return RerankResponse(results=[])
 
     model_name = f"cross-encoder/{request.model}"
     service = CrossEncoderRerankService(modelName=model_name)
