@@ -3,6 +3,8 @@ services:
   peanutshell:
     image: ghcr.io/sugarforever/peanut-shell:latest
     pull_policy: always
+    environment:
+      - HF_ENDPOINT=${HF_ENDPOINT}
     ports:
       - "8000:8000"
     volumes:
