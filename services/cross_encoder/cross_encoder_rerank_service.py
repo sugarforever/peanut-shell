@@ -4,12 +4,17 @@ from http_requests import RerankRequest
 from http_responses import RerankResponse
 from services.rerank_service import RerankService
 
-
 class CrossEncoderRerankService(RerankService):
 
     def __init__(self, modelName: str) -> None:
         super().__init__()
-        self.cross_encoder = CrossEncoder(model_name=modelName)
+
+        try:
+            self.cross_encoder = CrossEncoder(model_name=modelName, local_files_only=True)
+        except EnvironmentError as e:
+            print(f"Cached model files may not exist. Failed to load model {modelName} with local_files_only=True: {e.strerror}")
+            print(f"Attempting to load model {modelName} from remote repository")
+            self.cross_encoder = CrossEncoder(model_name=modelName, local_files_only=False)
 
     def rerank(self, request: RerankRequest) -> RerankResponse:
         pairs = []
