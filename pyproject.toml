@@ -10,8 +10,9 @@ python = "^3.11"
 fastapi = "^0.111.0"
 uvicorn = "^0.29.0"
 pydantic = "^2.7.1"
-sentence-transformers = "^2.7.0"
+sentence-transformers = "3.0.0"
 requests = "^2.31.0"
+transformers = "4.41.2"
 
 
 [build-system]
