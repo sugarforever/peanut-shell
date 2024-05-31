@@ -11,7 +11,7 @@ class CrossEncoderRerankService(RerankService):
 
         try:
             self.cross_encoder = CrossEncoder(model_name=modelName, local_files_only=True)
-        except EnvironmentError as e:
+        except Exception as e:
             print(f"Cached model files may not exist. Failed to load model {modelName} with local_files_only=True: {e.strerror}")
             print(f"Attempting to load model {modelName} from remote repository")
             self.cross_encoder = CrossEncoder(model_name=modelName, local_files_only=False)
